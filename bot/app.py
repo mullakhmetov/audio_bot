@@ -18,7 +18,7 @@ class MessageCounter(telepot.aio.helper.ChatHandler):
         await bot.download_file(file_id, '/tmp/%s.opus' % file_name)
         audio = AudioSegment.from_file('/tmp/%s.opus' % file_name)
         res = audio.export('%s.mp3' % file_name, format='mp3')
-        await bot.sendAudio(user_id, res)
+        await bot.sendPhoto(user_id, res)
 
     async def on_chat_message(self, msg):
         await self.handle_file(msg)
